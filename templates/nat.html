@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h2>NAT</h2>
+<p>Totally {{ nats|length }} Items in NAT Tab:</p>
+<div class="table-responsive"> 
+<table style="table-layout:fixed;word-break:break-all" class="table
+    table-condensed table-hover">
+<thead>
+<tr>
+<th>#</th>
+<th>名称</th>
+<th>状态</th>
+<th>入接口</th>
+<th>发布服务器</th>
+<th>源IP符合条件</th>
+<th>目的IP转换条件</th>
+<th>协议端口</th>
+<th>映射目的IP地址</th>
+<th>端口映射范围</th>
+</tr>
+</thead>
+<tbody>
+{% for nat in nats%}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{nat[0]}}</td>
+<td>{{nat[1]}}</td>
+<td>{{nat[2]}}</td>
+<td>{{nat[3]}}</td>
+<td>{{nat[4]}}</td>
+<td>{{nat[5]}}</td>
+<td>{{nat[6]}}</td>
+<td>{{nat[7]}}</td>
+<td>{{nat[8]}}</td>
+</tr>
+{% endfor%}
+</tbody>
+</table>
+</div>
+{% endblock %}

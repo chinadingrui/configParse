@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h2>MAC</h2>
+<p>Totally {{ macs|length }} Items:</p>
+<table class="table">
+<thead>
+<tr>
+<th>#</th>
+<th>SW</th>
+<th>MAC</th>
+<th>VLAN</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+{% for mac in macs%}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{mac[0]}}</td>
+<td>{{mac[1]}}</td>
+<td>{{mac[2]}}</td>
+<td>{{mac[3]}}</td>
+</tr>
+{% endfor%}
+</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block page_content %}
+<p><b>Totally {{ arps|length }} Items in Arp Table:</b></p>
+<table class="table">
+<thead>
+<tr>
+<th>#</th>
+<th>SW</th>
+<th>IP</th>
+<th>MAC</th>
+<th>EX-VLAN</th>
+<th>IN-VLAN</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+{% for arp in arps%}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{arp[0]}}</td>
+<td>{{arp[1]}}</td>
+<td>{{arp[2]}}</td>
+<td>{{arp[3]}}</td>
+<td>{{arp[4]}}</td>
+<td>{{arp[5]}}</td>
+</tr>
+{% endfor%}
+</tbody>
+</table>
+<p><b>Totally {{ macs|length }} Items in Mac Table:</b></p>
+<table class="table">
+<thead>
+<tr>
+<th>#</th>
+<th>SW</th>
+<th>MAC</th>
+<th>VLAN</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+{% for mac in macs%}
+<tr>
+<td>{{loop.index}}<td>
+<td>{{mac[0]}}<td>
+<td>{{mac[1]}}<td>
+<td>{{mac[2]}}<td>
+<td>{{mac[3]}}<td>
+</tr>
+{% endfor%}
+</tbody>
+</table>
+<p><b>Totally {{ nats|length }} Items in NAT Tab:</b></p>
+<table class="table">                    
+<thead>                           
+<tr>                              
+<th>#</th>                        
+<th>名称</th>
+<th>状态</th>
+<th>入接口</th>
+<th>发布服务器</th>
+<th>源IP符合条件</th>
+<th>目的IP转换条件</th>
+<th>制定协议</th>
+<th>映射目的IP地址</th>
+<th>端口映射范围</th>
+</tr>
+</thead>
+<tbody>
+{% for nat in nats%}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{nat[0]}}</td>
+<td>{{nat[1]}}</td>
+<td>{{nat[2]}}</td>
+<td>{{nat[3]}}</td>
+<td>{{nat[4]}}</td>
+<td>{{nat[5]}}</td>
+<td>{{nat[6]}}</td>
+<td>{{nat[7]}}</td>
+<td>{{nat[8]}}</td>
+</tr>
+{% endfor%}
+</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "bootstrap/base.html" %}
+{%- block metas %}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!--http://v3.bootcss.com/css/ 为了确保适当的绘制和触屏缩放-->
+{%- endblock metas %}
+{% block title %}临沂云{% endblock title%}
+{% block navbar %}
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container" style="width:940px;margin: 30px auto 0 auto;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle"
+        data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">临沂云</a>
+      </div>
+      <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/arp">Arp</a></li>
+            <li><a href="/mac">Mac</a></li>
+            <li><a href="/nat">NAT</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Initialize
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/initialize/arp">ARP</a></li>
+                    <li><a href="/initialize/mac">MAC</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/settings">Settings</a></li>
+                </ul>
+            </li>
+            <li>
+              <input type="text"class="form-control" id="search-box-input" placeholder="Search">
+            </li>
+            <li>
+              <select class="form-control" id="search-box-select">
+                <option>Summary</option>
+                <option>ARP</option>
+                <option>MAC</option>
+                <option>NAT</option>
+              </select>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block content %}
+<section class="content-wrap">
+    <div class="row"  style="width:1170px;margin: 30px auto 0 auto;">
+        <main class="col-lg-10 main-content">
+            <div class="container">
+            {% block page_content %}{% endblock %}
+            </div>
+        </main>
+        <aside class="col-lg-2 sidebar">
+        {% block sidebar %}{% endblock %}
+        </aside>
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+    var kw_search = function(event){
+        var sbox_select = document.getElementById("search-box-select");
+        var sbox_input = document.getElementById("search-box-input");
+        if (event.keyCode === 13 && !!sbox_input.value){
+            location.href = "\/"+sbox_select[sbox_select.selectedIndex].value.toLowerCase() + "\/" + sbox_input.value;
+        }
+    }
+    var sbox_input = document.getElementById("search-box-input");
+    sbox_input.addEventListener("keyup",kw_search,false);
+</script>
+{% endblock %}

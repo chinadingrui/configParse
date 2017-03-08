@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h2>ARP</h2>
+<p>Totally {{ arps|length }} Items:</p>
+<table class="table">
+<thead>
+<tr>
+<th>#</th>
+<th>SW</th>
+<th>IP</th>
+<th>MAC</th>
+<th>EX-VLAN</th>
+<th>IN-VLAN</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+{% for arp in arps%}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{arp[0]}}</td>
+<td>{{arp[1]}}</td>
+<td>{{arp[2]}}</td>
+<td>{{arp[3]}}</td>
+<td>{{arp[4]}}</td>
+<td>{{arp[5]}}</td>
+</tr>
+{% endfor%}
+</tbody>
+</table>
+{% endblock %}
